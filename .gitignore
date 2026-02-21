@@ -1,0 +1,5 @@
+.env
+heatmap.db
+.venv/
+__pycache__/
+*.pyc

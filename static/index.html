@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strava Heatmap</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <!-- ── Nav bar ───────────────────────────────────────────────────── -->
+  <nav id="navbar">
+    <span id="logo">&#9632; Strava Heatmap</span>
+    <div id="nav-right">
+      <span id="sync-status"></span>
+      <button id="btn-sync" class="btn-primary" onclick="triggerSync()">Sync Activities ↻</button>
+    </div>
+  </nav>
+
+  <!-- ── Connect screen (shown when not authenticated) ────────────── -->
+  <div id="connect-screen" class="hidden">
+    <div id="connect-card">
+      <h2>Welcome to Strava Heatmap</h2>
+      <p>Connect your Strava account to visualize all your activities on a single map.</p>
+      <a href="/auth/strava" class="btn-primary btn-large">Connect with Strava</a>
+    </div>
+  </div>
+
+  <!-- ── Main app ──────────────────────────────────────────────────── -->
+  <div id="app" class="hidden">
+    <aside id="sidebar">
+      <section class="sidebar-section">
+        <h3>Sport Type</h3>
+        <div id="sport-filters"></div>
+      </section>
+
+      <section class="sidebar-section">
+        <h3>Date Range</h3>
+        <label>From <input type="date" id="date-after" /></label>
+        <label>To&nbsp;&nbsp;&nbsp;<input type="date" id="date-before" /></label>
+      </section>
+
+      <section class="sidebar-section" id="stats-section">
+        <h3>Stats</h3>
+        <div id="stats"></div>
+      </section>
+    </aside>
+
+    <div id="map"></div>
+  </div>
+
+  <!-- ── Tooltip ───────────────────────────────────────────────────── -->
+  <div id="tooltip" class="hidden"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
